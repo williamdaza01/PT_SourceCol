@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using ptSourceCol;
+using System.Linq;
 //Punto 1
 /*Console.WriteLine("Ingrese una cadena de texto");
 string str = Console.ReadLine();
@@ -56,7 +58,9 @@ string perteneceFibonacci(int n)
 
 int num = Int32.Parse(str);
 
-Console.WriteLine(perteneceFibonacci(num));*/
+Console.WriteLine(perteneceFibonacci(num));
+
+//Punto 4
 
 int[] arrNum = new int[] { 5, 1, 4, 6, 8, 12, 35, 81, 2 };
 
@@ -82,6 +86,45 @@ for(int i = 0; i<arrNum.Length; i++)
 {
     Console.WriteLine(arrNum[i]); 
 
+}*/
+
+//Punto 4
+
+Carro aveo = new Carro("chevrolet", "negro", 2014);
+Carro mazda3 = new Carro("mazda", "blanco", 2019);
+Carro sandero = new Carro("renault", "gris", 2010);
+Carro fiesta = new Carro("ford", "gris", 2016);
+Carro captiva = new Carro("chevrolet", "dorada", 2020);
+Carro fortuner = new Carro("toyota", "blamco", 2021);
+
+List<Carro> carros = new List<Carro>();
+
+carros.Add(aveo);
+carros.Add(mazda3);
+carros.Add(sandero);
+carros.Add(fiesta);
+carros.Add(captiva);
+carros.Add(fortuner);
+
+List<Carro> obtenerCincoAno(List<Carro> carros)
+{
+    List<Carro> carros1 = new List<Carro>();
+    var query = from car in carros
+                where DateTime.Now.Year - car.model <= 5
+                select car;
+
+    foreach(var item in query)
+    {
+        carros1.Add(item);
+    }
+    return carros1;
+}
+
+var car = obtenerCincoAno(carros);
+
+foreach(var item in car)
+{
+    Console.WriteLine(item.model);
 }
 
 
